@@ -1,0 +1,57 @@
+{
+  "model": "Q2_SAA_CVaR",
+  "candidate": "lambda_050",
+  "surplus_policy": "waste_no_revenue",
+  "scenario_file": "q2_optimization_100.npz",
+  "scenario_count": 100,
+  "risk": {
+    "alpha": 0.9,
+    "lambda": 0.5,
+    "objective_formula": "mean_profit + lambda * lower_tail_profit_CVaR"
+  },
+  "solver": {
+    "name": "HiGHS",
+    "version": "1.15.1",
+    "status": "Time limit reached",
+    "runtime_seconds": 2552.257681799936,
+    "mip_gap": 0.02782813781539069,
+    "dual_bound": 62774283.62868269,
+    "node_count": 0,
+    "time_limit_seconds": 1800.0
+  },
+  "model_size": {
+    "area_variables": 7434,
+    "binary_planting_variables": 7434,
+    "water_mode_variables": 56,
+    "scenario_sales_variables": 41300,
+    "scenario_profit_variables": 100,
+    "cvar_shortfall_variables": 100
+  },
+  "management_constraints": {
+    "minimum_area_mu_by_land_type": {
+      "平旱地": 5.0,
+      "梯田": 5.0,
+      "山坡地": 5.0,
+      "水浇地": 5.0,
+      "普通大棚": 0.3,
+      "智慧大棚": 0.3
+    },
+    "max_plots_per_crop_per_year_season": 7
+  },
+  "warm_start": {
+    "source": "results/q2_lambda_025_solution_long.csv",
+    "set_status": "HighsStatus.kOk"
+  },
+  "objective": 61074688.77249,
+  "training_mean_profit_yuan": 40819607.290886,
+  "training_std_profit_yuan": 183106.465609,
+  "training_p05_profit_yuan": 40519485.77762,
+  "training_lower_cvar_profit_yuan": 40510162.963208,
+  "positive_area_rows": 760,
+  "constraint_violations": null,
+  "assumption_notes": [
+    "第二问题面未另行规定超额产品售价，主模型采用超额产量不计收入的保守口径。",
+    "成本和蔬菜价格的三角分布、粮食价格正负1%稳定带是第一轮模拟假设，并非题面直接给定。",
+    "优化情景与样本外测试情景由同一SeedSequence(2024)派生的独立随机流生成。"
+  ]
+}

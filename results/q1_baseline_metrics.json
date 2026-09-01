@@ -1,0 +1,37 @@
+{
+  "model": "Q1_baseline_waste",
+  "surplus_policy": "waste",
+  "management_constraints": {
+    "minimum_area": false,
+    "maximum_plot_count": false
+  },
+  "solver": {
+    "name": "HiGHS",
+    "version": "1.15.1",
+    "status": "Optimal",
+    "runtime_seconds": 210.95243579999078,
+    "mip_gap": 0.005276269278969328,
+    "dual_bound": 41213296.547165684,
+    "node_count": 218,
+    "time_limit_seconds": 600
+  },
+  "model_size": {
+    "area_variables": 7434,
+    "planting_binary_variables": 7434,
+    "water_mode_binary_variables": 56,
+    "normal_sales_variables": 413
+  },
+  "objective": 40996985.412503,
+  "total_profit_yuan": 40996985.412504,
+  "total_production_jin": 8967704.8317,
+  "total_surplus_jin": 225782.714688,
+  "surplus_rate": 0.0251773134,
+  "positive_area_rows": 798,
+  "constraint_violations": {
+    "total": 0,
+    "failed_checks": 0,
+    "audit_status": "PASS"
+  },
+  "recalculated_profit_yuan": 40996985.348976,
+  "profit_recalculation_difference_yuan": 0.063528
+}

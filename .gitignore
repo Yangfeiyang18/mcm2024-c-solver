@@ -1,0 +1,13 @@
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.python_packages/
+.pytest_cache/
+.mypy_cache/
+.codex_tmp/
+.artifact_work/
+.DS_Store
+Thumbs.db
+*.log
+!.gitkeep

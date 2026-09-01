@@ -1,0 +1,51 @@
+{
+  "model_name": "Q2_SAA_CVaR",
+  "years": [2024, 2025, 2026, 2027, 2028, 2029, 2030],
+  "surplus_policy": "waste_no_revenue",
+  "random_seed": 2024,
+  "scenario_counts": {
+    "optimization": 100,
+    "out_of_sample_test": 2000,
+    "convergence_small": 50,
+    "convergence_large": 200
+  },
+  "risk": {
+    "alpha": 0.90,
+    "lambda_values": [0.0, 0.25, 0.5],
+    "objective": "expected_profit_plus_lambda_times_lower_tail_profit_cvar"
+  },
+  "uncertainty": {
+    "wheat_corn_demand_annual_growth_uniform": [0.05, 0.10],
+    "other_crop_demand_relative_to_2023_uniform": [-0.05, 0.05],
+    "yield_relative_to_2023_uniform": [-0.10, 0.10],
+    "cost_annual_growth_triangular": [0.04, 0.05, 0.06],
+    "grain_price_relative_to_2023_uniform": [-0.01, 0.01],
+    "vegetable_price_annual_growth_triangular": [0.04, 0.05, 0.06],
+    "ordinary_fungus_price_annual_decline_uniform": [0.01, 0.05],
+    "morel_price_annual_decline_fixed": 0.05
+  },
+  "management": {
+    "minimum_area_mu_by_land_type": {
+      "平旱地": 5.0,
+      "梯田": 5.0,
+      "山坡地": 5.0,
+      "水浇地": 5.0,
+      "普通大棚": 0.3,
+      "智慧大棚": 0.3
+    },
+    "max_plots_per_crop_per_year_season": 7
+  },
+  "solver": {
+    "name": "HiGHS",
+    "mean_value_time_limit_seconds": 600,
+    "saa_time_limit_seconds": 1800,
+    "mip_relative_gap": 0.01,
+    "random_seed": 2024
+  },
+  "numeric_tolerance": 0.000001,
+  "assumption_notes": [
+    "第二问题面未另行规定超额产品售价，主模型采用超额产量不计收入的保守口径。",
+    "成本和蔬菜价格的三角分布、粮食价格正负1%稳定带是第一轮模拟假设，并非题面直接给定。",
+    "优化情景与样本外测试情景由同一SeedSequence(2024)派生的独立随机流生成。"
+  ]
+}

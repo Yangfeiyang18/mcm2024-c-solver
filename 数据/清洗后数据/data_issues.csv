@@ -1,0 +1,7 @@
+﻿severity,issue_type,table,source_row,key,detail
+warning,fallback_parameter_used,demand_2023,75,32|智慧大棚|first,按题目脚注，智慧大棚第一季沿用普通大棚第一季参数
+warning,fallback_parameter_used,demand_2023,76,33|智慧大棚|first,按题目脚注，智慧大棚第一季沿用普通大棚第一季参数
+warning,fallback_parameter_used,demand_2023,79,25|智慧大棚|first,按题目脚注，智慧大棚第一季沿用普通大棚第一季参数
+warning,fallback_parameter_used,demand_2023,80,26|智慧大棚|first,按题目脚注，智慧大棚第一季沿用普通大棚第一季参数
+warning,fallback_parameter_used,demand_2023,83,17|智慧大棚|first,按题目脚注，智慧大棚第一季沿用普通大棚第一季参数
+warning,fallback_parameter_used,demand_2023,86,19|智慧大棚|first,按题目脚注，智慧大棚第一季沿用普通大棚第一季参数

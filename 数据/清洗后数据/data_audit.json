@@ -1,0 +1,131 @@
+{
+  "generated_at": "2026-08-30T02:32:33.777Z",
+  "project": "2024年C题：农作物的种植策略",
+  "seed": 2024,
+  "audit_passed": true,
+  "metrics": {
+    "plots_total": {
+      "expected": 54,
+      "actual": 54,
+      "passed": true,
+      "explanation": "每块土地只保留一行"
+    },
+    "outdoor_plots": {
+      "expected": 34,
+      "actual": 34,
+      "passed": true,
+      "explanation": "A-D 类地块"
+    },
+    "outdoor_area_mu": {
+      "expected": 1201,
+      "actual": 1201,
+      "passed": true,
+      "explanation": "A-D 类面积合计"
+    },
+    "ordinary_greenhouse_count": {
+      "expected": 16,
+      "actual": 16,
+      "passed": true,
+      "explanation": "E1-E16"
+    },
+    "smart_greenhouse_count": {
+      "expected": 4,
+      "actual": 4,
+      "passed": true,
+      "explanation": "F1-F4"
+    },
+    "total_area_mu": {
+      "expected": 1213,
+      "actual": 1213,
+      "passed": true,
+      "explanation": "含两类大棚"
+    },
+    "crops_total": {
+      "expected": 41,
+      "actual": 41,
+      "passed": true,
+      "explanation": "编号1-41"
+    },
+    "legume_crops": {
+      "expected": 8,
+      "actual": 8,
+      "passed": true,
+      "explanation": "粮食豆类5种、蔬菜豆类3种"
+    },
+    "planting_records_2023": {
+      "expected": 87,
+      "actual": 87,
+      "passed": true,
+      "explanation": "合并单元格向下填充后保留"
+    },
+    "planting_plots_covered": {
+      "expected": 54,
+      "actual": 54,
+      "passed": true,
+      "explanation": "54块地均有记录"
+    },
+    "observed_parameter_records": {
+      "expected": 107,
+      "actual": 107,
+      "passed": true,
+      "explanation": "排除底部说明行"
+    },
+    "observed_parameter_duplicate_keys": {
+      "expected": 0,
+      "actual": 0,
+      "passed": true,
+      "explanation": "主键为作物-地类-季次"
+    },
+    "smart_first_planting_fallback_records": {
+      "expected": 6,
+      "actual": 6,
+      "passed": true,
+      "explanation": "按题目脚注沿用普通大棚参数"
+    },
+    "template_year_sheets": {
+      "expected": 7,
+      "actual": 7,
+      "passed": true,
+      "explanation": "2024-2030"
+    },
+    "template_crop_columns": {
+      "expected": 41,
+      "actual": 41,
+      "passed": true,
+      "explanation": "黄豆至羊肚菌"
+    },
+    "template_first_season_rows": {
+      "expected": 54,
+      "actual": 54,
+      "passed": true,
+      "explanation": "单季作物也写入第一季区"
+    },
+    "template_second_season_rows": {
+      "expected": 28,
+      "actual": 28,
+      "passed": true,
+      "explanation": "D、E、F类地块"
+    },
+    "fatal_data_issues": {
+      "expected": 0,
+      "actual": 0,
+      "passed": true,
+      "explanation": "连接失败、价格解析失败等"
+    }
+  },
+  "derived_counts": {
+    "planting_blank_plot_cells_filled": 33,
+    "generated_smart_greenhouse_first_season_parameters": 18,
+    "total_parameter_records_after_fallback": 125,
+    "demand_rows": 47,
+    "eligibility_rows": 3690,
+    "eligible_combinations": 1062,
+    "template_mapping_rows": 23534,
+    "warning_count": 6
+  },
+  "source_sha256": {
+    "attachment1": "b799a137294a5c5497fed9667c5dfed6c967f1fb180316c5adc8509cfa6f0932",
+    "attachment2": "869081a3ab47d3bf8d0955106b622aaf0fd2c068fada7948da69b20ebf1d00ce",
+    "resultTemplate": "4f2484c0d70a5c4d047163f2ee6ef486949e813330466f46def4bd7d98af06af"
+  }
+}

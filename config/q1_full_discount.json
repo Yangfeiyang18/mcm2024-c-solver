@@ -1,0 +1,27 @@
+{
+  "model_name": "Q1_full_discount",
+  "years": [2024, 2025, 2026, 2027, 2028, 2029, 2030],
+  "surplus_policy": "discount_50_percent",
+  "allow_fallow": true,
+  "include_minimum_area": true,
+  "include_max_plot_count": true,
+  "management": {
+    "minimum_area_mu_by_land_type": {
+      "平旱地": 5.0,
+      "梯田": 5.0,
+      "山坡地": 5.0,
+      "水浇地": 5.0,
+      "普通大棚": 0.3,
+      "智慧大棚": 0.3
+    },
+    "max_plots_per_crop_per_year_season": 7
+  },
+  "solver": {
+    "name": "HiGHS",
+    "time_limit_seconds": 600,
+    "mip_relative_gap": 0.01,
+    "random_seed": 2024
+  },
+  "warm_start_solution": "results/q1_full_waste_solution_long.csv",
+  "numeric_tolerance": 0.000001
+}
