@@ -18,10 +18,10 @@
     "name": "HiGHS",
     "version": "1.15.1",
     "status": "Optimal",
-    "runtime_seconds": 594.508389600087,
-    "mip_gap": 0.009250695912102588,
-    "dual_bound": 58921037.59746819,
-    "node_count": 137,
+    "runtime_seconds": 531.6144998073578,
+    "mip_gap": 0.007700934077326965,
+    "dual_bound": 58915323.94839231,
+    "node_count": 644,
     "time_limit_seconds": 600
   },
   "model_size": {
@@ -34,17 +34,17 @@
     "source": "results/q1_full_waste_solution_long.csv",
     "set_status": "HighsStatus.kOk"
   },
-  "objective": 58380972.969475,
-  "total_profit_yuan": 58380972.969475,
-  "total_production_jin": 14957111.062245,
-  "total_surplus_jin": 7932848.017155,
-  "surplus_rate": 0.5303730101,
-  "positive_area_rows": 700,
+  "objective": 58465088.158657,
+  "total_profit_yuan": 58465088.158657,
+  "total_production_jin": 14831900.077922,
+  "total_surplus_jin": 7688195.964119,
+  "surplus_rate": 0.5183554315,
+  "positive_area_rows": 689,
   "constraint_violations": {
     "total": 0,
     "failed_checks": 0,
     "audit_status": "PASS"
   },
-  "recalculated_profit_yuan": 58380972.956676,
-  "profit_recalculation_difference_yuan": 0.012799
+  "recalculated_profit_yuan": 58465088.144023,
+  "profit_recalculation_difference_yuan": 0.014634
 }

@@ -13,9 +13,9 @@
     "name": "HiGHS",
     "version": "1.15.1",
     "status": "Optimal",
-    "runtime_seconds": 4.485932199982926,
-    "mip_gap": 0.019025613573804962,
-    "dual_bound": 42597683.49188168,
+    "runtime_seconds": 1.1062207221984863,
+    "mip_gap": 0.016514466193487273,
+    "dual_bound": 42597683.4918817,
     "node_count": 1,
     "time_limit_seconds": 600.0
   },
@@ -42,12 +42,12 @@
     "source": "results/q1_full_waste_solution_long.csv",
     "set_status": "HighsStatus.kOk"
   },
-  "objective": 41802367.79573,
-  "training_mean_profit_yuan": 41802367.79573,
+  "objective": 41905634.31074,
+  "training_mean_profit_yuan": 41905634.31074,
   "training_std_profit_yuan": 0.0,
-  "training_p05_profit_yuan": 41802367.79573,
-  "training_lower_cvar_profit_yuan": 41802367.79573,
-  "positive_area_rows": 760,
+  "training_p05_profit_yuan": 41905634.31074,
+  "training_lower_cvar_profit_yuan": 41905634.31074,
+  "positive_area_rows": 752,
   "constraint_violations": {
     "total": 0,
     "failed_checks": 0,
@@ -58,5 +58,5 @@
     "成本和蔬菜价格的三角分布、粮食价格正负1%稳定带是第一轮模拟假设，并非题面直接给定。",
     "优化情景与样本外测试情景由同一SeedSequence(2024)派生的独立随机流生成。"
   ],
-  "profit_recalculation_max_difference_yuan": 0.0
+  "profit_recalculation_max_difference_yuan": 0.020259
 }

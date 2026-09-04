@@ -30,7 +30,7 @@ def write_csv(path: Path, fieldnames: list[str], rows: list[dict[str, Any]]) -> 
 
 
 def main(candidate: str) -> None:
-    prefix = f"q2_{candidate}"
+    prefix = candidate if candidate.startswith("q3") else f"q2_{candidate}"
     metrics_path = RESULTS_DIR / f"{prefix}_metrics.json"
     metrics = json.loads(metrics_path.read_text(encoding="utf-8"))
     plots = read_csv(CLEAN_DIR / "plots.csv")
@@ -137,7 +137,17 @@ def main(candidate: str) -> None:
             for year in years[:-1]:
                 if area_by_key[(year, plot_id, "second", crop_id)] > TOLERANCE and area_by_key[(year + 1, plot_id, "first", crop_id)] > TOLERANCE:
                     smart_rotation.append((f"cross/{year}/{plot_id}/{crop_id}", 1.0))
-    record("智慧大棚连续季重茬", smart_rotation, "处", "智慧大棚年内和跨年均无连续重茬")
+    for row in planting_2023:
+        plot_id = row["plot_id"]
+        if plot_by_id.get(plot_id, {}).get("land_type") != "智慧大棚":
+            continue
+        if row["season"] != "second":
+            continue
+        crop_id = int(row["crop_id"])
+        area = area_by_key[(2024, plot_id, "first", crop_id)]
+        if area > TOLERANCE:
+            smart_rotation.append((f"initial_cross/2023-2024/{plot_id}/{crop_id}", area))
+    record("智慧大棚连续季重茬", smart_rotation, "处", "智慧大棚年内、跨年及2023S2→2024S1均无连续重茬")
 
     min_area = {k: float(v) for k, v in metrics["management_constraints"]["minimum_area_mu_by_land_type"].items()}
     minimum_violations = []
@@ -232,6 +242,9 @@ def main(candidate: str) -> None:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("candidate", choices=["mean_value", "lambda_0", "lambda_025", "lambda_050"])
+    parser.add_argument(
+        "candidate",
+        choices=["mean_value", "lambda_0", "lambda_025", "lambda_050", "q3a", "q3b", "q3a_medium", "q3b_medium"],
+    )
     args = parser.parse_args()
     main(args.candidate)

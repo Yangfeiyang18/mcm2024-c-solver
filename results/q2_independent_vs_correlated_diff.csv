@@ -1,0 +1,3 @@
+﻿comparison,mean_difference_yuan,median_difference_yuan,win_rate,p05_difference_yuan,lower_cvar_difference_yuan
+weak_corr_minus_independent,-50240.299894,-58778.281794,0.4105,-483813.293438,-511895.249037
+medium_corr_minus_independent,-62465.104223,-63141.7011,0.411,-539151.234895,-570667.898083

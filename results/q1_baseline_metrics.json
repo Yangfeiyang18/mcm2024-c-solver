@@ -9,7 +9,7 @@
     "name": "HiGHS",
     "version": "1.15.1",
     "status": "Optimal",
-    "runtime_seconds": 210.95243579999078,
+    "runtime_seconds": 189.79793500900269,
     "mip_gap": 0.005276269278969328,
     "dual_bound": 41213296.547165684,
     "node_count": 218,

@@ -206,7 +206,8 @@ def main() -> None:
         if key in combination_set:
             model.addConstr(y[(2024, *key)] <= 0, name=f"initial_rotation_2024_{key[0]}_{key[1]}_{key[2]}")
 
-    # 智慧大棚两季作物集合相同，额外检查年内连续季和跨年连续季。
+    # 智慧大棚两季作物集合相同，额外约束相邻实际种植槽位不能重茬：
+    # 年内 first→second、跨年 second→next first，以及 2023 second→2024 first。
     smart_plots = [plot_id for plot_id, plot in plot_by_id.items() if plot["land_type"] == "智慧大棚"]
     for plot_id in smart_plots:
         for crop_id in range(17, 35):
@@ -220,6 +221,18 @@ def main() -> None:
                     y[(first_year, plot_id, "second", crop_id)] + y[(second_year, plot_id, "first", crop_id)] <= 1,
                     name=f"smart_cross_year_{first_year}_{plot_id}_{crop_id}",
                 )
+    for row in planting_2023:
+        plot_id = row["plot_id"]
+        if plot_by_id.get(plot_id, {}).get("land_type") != "智慧大棚":
+            continue
+        if row["season"] != "second":
+            continue
+        crop_id = int(row["crop_id"])
+        if (plot_id, "first", crop_id) in combination_set:
+            model.addConstr(
+                y[(2024, plot_id, "first", crop_id)] <= 0,
+                name=f"smart_initial_cross_2023_{plot_id}_{crop_id}",
+            )
 
     # 任意连续三年内，豆类累计种植面积至少覆盖该地块一次。
     bean_area_2023: dict[str, float] = defaultdict(float)

@@ -128,7 +128,17 @@ def main() -> None:
             for year in range(2024, 2030):
                 if area_by_key[(year, plot_id, "second", crop_id)] > TOLERANCE and area_by_key[(year + 1, plot_id, "first", crop_id)] > TOLERANCE:
                     smart_rotation.append((f"cross/{year}-{year + 1}/{plot_id}/{crop_id}", 1.0))
-    record("智慧大棚连续季重茬", smart_rotation, "处", "年内与跨年连续季均无同作物")
+    for row in planting_2023:
+        plot_id = row["plot_id"]
+        if plot_by_id.get(plot_id, {}).get("land_type") != "智慧大棚":
+            continue
+        if row["season"] != "second":
+            continue
+        crop_id = int(row["crop_id"])
+        area = area_by_key[(2024, plot_id, "first", crop_id)]
+        if area > TOLERANCE:
+            smart_rotation.append((f"initial_cross/2023-2024/{plot_id}/{crop_id}", area))
+    record("智慧大棚连续季重茬", smart_rotation, "处", "年内、跨年及2023S2→2024S1均无同作物")
 
     minimum_area_by_land_type = {
         land_type: float(value)

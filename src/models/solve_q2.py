@@ -48,6 +48,38 @@ CANDIDATES = {
         "time_limit_key": "saa_time_limit_seconds",
         "warm_start": "results/q2_lambda_025_solution_long.csv",
     },
+    "q3a": {
+        "scenario_file": "q3_weak_optimization_100.npz",
+        "lambda": 0.25,
+        "time_limit_key": "saa_time_limit_seconds",
+        "warm_start": "results/q2_lambda_025_solution_long.csv",
+        "output_prefix": "q3a",
+        "model_name": "Q3A_correlation_only",
+    },
+    "q3b": {
+        "scenario_file": "q3_weak_elasticity_optimization_100.npz",
+        "lambda": 0.25,
+        "time_limit_key": "saa_time_limit_seconds",
+        "warm_start": "results/q3a_solution_long.csv",
+        "output_prefix": "q3b",
+        "model_name": "Q3B_correlation_elasticity",
+    },
+    "q3a_medium": {
+        "scenario_file": "q3_medium_optimization_100.npz",
+        "lambda": 0.25,
+        "time_limit_key": "saa_time_limit_seconds",
+        "warm_start": "results/q2_lambda_025_solution_long.csv",
+        "output_prefix": "q3a_medium",
+        "model_name": "Q3A_medium_correlation",
+    },
+    "q3b_medium": {
+        "scenario_file": "q3_medium_elasticity_optimization_100.npz",
+        "lambda": 0.25,
+        "time_limit_key": "saa_time_limit_seconds",
+        "warm_start": "results/q3a_medium_solution_long.csv",
+        "output_prefix": "q3b_medium",
+        "model_name": "Q3B_medium_correlation_elasticity",
+    },
 }
 
 
@@ -161,7 +193,12 @@ def main(candidate_name: str) -> None:
     model.setOptionValue("time_limit", time_limit)
     model.setOptionValue("mip_rel_gap", float(solver_config["mip_relative_gap"]))
     model.setOptionValue("random_seed", int(solver_config["random_seed"]))
-    model.setOptionValue("log_file", str(LOGS_DIR / f"q2_{candidate_name}_solver.log"))
+    if "threads" in solver_config:
+        model.setOptionValue("threads", int(solver_config["threads"]))
+    if "parallel" in solver_config:
+        model.setOptionValue("parallel", str(solver_config["parallel"]))
+    prefix = str(candidate.get("output_prefix", f"q2_{candidate_name}"))
+    model.setOptionValue("log_file", str(LOGS_DIR / f"{prefix}_solver.log"))
     model.setOptionValue("output_flag", True)
 
     x: dict[tuple[int, str, str, int], Any] = {}
@@ -309,6 +346,8 @@ def main(candidate_name: str) -> None:
         if key in combination_set:
             model.addConstr(y[(2024, *key)] <= 0, name=f"initial_rotation_{key[0]}_{key[1]}_{key[2]}")
 
+    # 智慧大棚两季作物集合相同，额外约束相邻实际种植槽位不能重茬：
+    # 年内 first→second、跨年 second→next first，以及 2023 second→2024 first。
     smart_plots = [plot_id for plot_id, plot in plot_by_id.items() if plot["land_type"] == "智慧大棚"]
     for plot_id in smart_plots:
         for crop_id in range(17, 35):
@@ -322,6 +361,18 @@ def main(candidate_name: str) -> None:
                     y[(first_year, plot_id, "second", crop_id)] + y[(second_year, plot_id, "first", crop_id)] <= 1,
                     name=f"smart_cross_{first_year}_{plot_id}_{crop_id}",
                 )
+    for row in planting_2023:
+        plot_id = row["plot_id"]
+        if plot_by_id.get(plot_id, {}).get("land_type") != "智慧大棚":
+            continue
+        if row["season"] != "second":
+            continue
+        crop_id = int(row["crop_id"])
+        if (plot_id, "first", crop_id) in combination_set:
+            model.addConstr(
+                y[(2024, plot_id, "first", crop_id)] <= 0,
+                name=f"smart_initial_cross_2023_{plot_id}_{crop_id}",
+            )
 
     bean_area_2023: dict[str, float] = defaultdict(float)
     for row in planting_2023:
@@ -421,7 +472,6 @@ def main(candidate_name: str) -> None:
             "area_mu": round(area, 6),
         })
     solution_rows.sort(key=lambda row: (row["year"], row["plot_id"], row["season"], row["crop_id"]))
-    prefix = f"q2_{candidate_name}"
     write_csv(
         RESULTS_DIR / f"{prefix}_solution_long.csv",
         ["candidate", "year", "season", "plot_id", "land_type", "crop_id", "crop_name", "area_mu"],
@@ -439,7 +489,7 @@ def main(candidate_name: str) -> None:
         training_rows,
     )
     metrics = {
-        "model": config["model_name"],
+        "model": candidate.get("model_name", config["model_name"]),
         "candidate": candidate_name,
         "surplus_policy": config["surplus_policy"],
         "scenario_file": candidate["scenario_file"],

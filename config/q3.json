@@ -1,0 +1,66 @@
+{
+  "model_name": "Q3_SAA_CVaR",
+  "inherits_q2_config": "config/q2.json",
+  "random_seed": 2024,
+  "locked_risk": {
+    "alpha": 0.90,
+    "lambda": 0.25
+  },
+  "correlation_strength": "weak",
+  "factor_weights": {
+    "weak": {"common": 0.30, "idiosyncratic": 0.9539392014169457},
+    "medium": {"common": 0.60, "idiosyncratic": 0.8}
+  },
+  "price_factor_loadings": {
+    "market": 1.0,
+    "cost_passthrough": 0.4,
+    "climate": -1.0
+  },
+  "crop_groups": {
+    "grain_staple": [6, 7],
+    "grain_other": [8, 9, 10, 11, 12, 13, 14, 15, 16],
+    "beans_grain": [1, 2, 3, 4, 5],
+    "beans_veg": [17, 18, 19],
+    "leafy": [23, 27, 28, 30, 32, 33, 34],
+    "solanum": [21, 22, 24, 29, 31],
+    "cabbage_root": [20, 25, 26, 35, 36, 37],
+    "fungus": [38, 39, 40, 41]
+  },
+  "substitute_groups": [
+    "grain_staple",
+    "beans_grain",
+    "beans_veg",
+    "leafy",
+    "solanum",
+    "cabbage_root",
+    "fungus"
+  ],
+  "substitute_elasticity": 0.15,
+  "extra_substitute_pairs": [
+    {
+      "crop_ids": [6, 20],
+      "names": ["小麦", "土豆"],
+      "use_main_substitute_elasticity": true,
+      "label": "情景假设",
+      "note": "均为淀粉类主食来源，设为弱替代，不是消费互补。"
+    }
+  ],
+  "complement_pairs": [
+    {
+      "crop_ids": [21, 29],
+      "names": ["西红柿", "黄瓜"],
+      "elasticity": -0.10,
+      "label": "情景假设",
+      "note": "蔬菜消费中可能同时出现；非附件估计。"
+    }
+  ],
+  "demand_adjustment_clip": [0.5, 1.5],
+  "morel_crop_id": 41,
+  "assumption_notes": [
+    "问题3的公共因子权重不是经验相关系数，论文只称弱/中相关情景，并以模拟后的经验相关为准。",
+    "Q3-A 只改变联合相关结构，保持问题2各参数的单变量边际分布。",
+    "Q3-B 在Q3-A情景上用交叉价格弹性调整需求，因此Q3-B需求边际不再与Q2完全相同。",
+    "已删除水稻–黄豆消费互补；小麦–土豆改为替代；仅保留西红柿–黄瓜作为弱互补情景假设。",
+    "羊肚菌价格仍按每年固定下降5%，不参与价格—产量相关机制。"
+  ]
+}

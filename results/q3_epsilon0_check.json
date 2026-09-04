@@ -1,0 +1,5 @@
+{
+  "check": "Q3B_epsilon_0_demand_equals_Q3A",
+  "max_abs_demand_difference": 0.0,
+  "status": "PASS"
+}

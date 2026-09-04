@@ -39,7 +39,9 @@
     "name": "HiGHS",
     "mean_value_time_limit_seconds": 600,
     "saa_time_limit_seconds": 1800,
-    "mip_relative_gap": 0.01,
+    "mip_relative_gap": 0.03,
+    "threads": 32,
+    "parallel": "on",
     "random_seed": 2024
   },
   "numeric_tolerance": 0.000001,
