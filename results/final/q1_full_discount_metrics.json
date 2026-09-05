@@ -1,0 +1,50 @@
+{
+  "model": "Q1_full_discount",
+  "surplus_policy": "discount_50_percent",
+  "management_constraints": {
+    "minimum_area": true,
+    "maximum_plot_count": true,
+    "minimum_area_mu_by_land_type": {
+      "平旱地": 5.0,
+      "梯田": 5.0,
+      "山坡地": 5.0,
+      "水浇地": 5.0,
+      "普通大棚": 0.3,
+      "智慧大棚": 0.3
+    },
+    "max_plots_per_crop_per_year_season": 7
+  },
+  "solver": {
+    "name": "HiGHS",
+    "version": "1.15.1",
+    "status": "Optimal",
+    "runtime_seconds": 531.6144998073578,
+    "mip_gap": 0.007700934077326965,
+    "dual_bound": 58915323.94839231,
+    "node_count": 644,
+    "time_limit_seconds": 600
+  },
+  "model_size": {
+    "area_variables": 7434,
+    "planting_binary_variables": 7434,
+    "water_mode_binary_variables": 56,
+    "normal_sales_variables": 413
+  },
+  "warm_start": {
+    "source": "results/q1_full_waste_solution_long.csv",
+    "set_status": "HighsStatus.kOk"
+  },
+  "objective": 58465088.158657,
+  "total_profit_yuan": 58465088.158657,
+  "total_production_jin": 14831900.077922,
+  "total_surplus_jin": 7688195.964119,
+  "surplus_rate": 0.5183554315,
+  "positive_area_rows": 689,
+  "constraint_violations": {
+    "total": 0,
+    "failed_checks": 0,
+    "audit_status": "PASS"
+  },
+  "recalculated_profit_yuan": 58465088.144023,
+  "profit_recalculation_difference_yuan": 0.014634
+}

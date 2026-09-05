@@ -1,0 +1,53 @@
+{
+  "source_version": "2026-09-04 locked closeout",
+  "use_only_from": [
+    "results/final",
+    "outputs/final",
+    "figures/final"
+  ],
+  "numbers": {
+    "q1_waste_profit_wan": 4076.85,
+    "q1_discount_profit_wan": 5846.51,
+    "q1_waste_gap_pct": 1.04,
+    "q1_discount_gap_pct": 0.77,
+    "q2_lambda": 0.25,
+    "q2_train_mean_wan": 4091.9,
+    "q2_train_cvar_wan": 4060.86,
+    "q2_gap_pct": 2.51,
+    "q3_test2000_mean_wan": {
+      "independent": 4092.17,
+      "weak": 4087.15,
+      "medium": 4085.93
+    },
+    "q3_test2000_std_wan": {
+      "independent": 17.81,
+      "weak": 19.73,
+      "medium": 23.22
+    },
+    "q3_test2000_cvar_wan": {
+      "independent": 4060.84,
+      "weak": 4051.93,
+      "medium": 4044.93
+    },
+    "q3_test2000_wheat_corn_demand_corr": {
+      "weak": 0.082407,
+      "medium": 0.371002
+    },
+    "q3_test2000_yield_price_corr": {
+      "weak": -0.046752,
+      "medium": -0.208393
+    }
+  },
+  "do_not_use": {
+    "old_q1_waste_wan": 4075.77,
+    "old_q1_discount_wan": 5838.1,
+    "q3_train100_wheat_corn_corr": {
+      "weak": 0.159475,
+      "medium": 0.361927
+    },
+    "factor_weight_is_not_correlation": {
+      "weak": 0.3,
+      "medium": 0.6
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "status": "PASS",
+  "excel": [
+    {
+      "excel": "outputs/final/result1_1.xlsx",
+      "csv": "results/q1_full_waste_solution_long.csv",
+      "status": "PASS",
+      "csv_positive_cells": 752,
+      "excel_positive_cells": 752,
+      "csv_total_mu": 8894.521699,
+      "excel_total_mu": 8894.521699,
+      "total_diff_mu": -0.0,
+      "missing_in_excel": [],
+      "extra_in_excel": [],
+      "mismatch_count": 0,
+      "mismatches": []
+    },
+    {
+      "excel": "outputs/final/result1_2.xlsx",
+      "csv": "results/q1_full_discount_solution_long.csv",
+      "status": "PASS",
+      "csv_positive_cells": 689,
+      "excel_positive_cells": 689,
+      "csv_total_mu": 9338.0,
+      "excel_total_mu": 9338.0,
+      "total_diff_mu": 0.0,
+      "missing_in_excel": [],
+      "extra_in_excel": [],
+      "mismatch_count": 0,
+      "mismatches": []
+    },
+    {
+      "excel": "outputs/final/result2.xlsx",
+      "csv": "results/q2_lambda_025_solution_long.csv",
+      "status": "PASS",
+      "csv_positive_cells": 752,
+      "excel_positive_cells": 752,
+      "csv_total_mu": 8918.87621,
+      "excel_total_mu": 8918.87621,
+      "total_diff_mu": 0.0,
+      "missing_in_excel": [],
+      "extra_in_excel": [],
+      "mismatch_count": 0,
+      "mismatches": []
+    }
+  ],
+  "failures": []
+}

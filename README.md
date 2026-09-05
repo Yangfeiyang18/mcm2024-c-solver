@@ -88,16 +88,22 @@ python src/data/generate_q2_scenarios.py
 | 数值 | `numpy` |
 | 可选本地包目录 | 旧代码会 `sys.path` 插入 `.python_packages/`；**新环境用 venv 即可**，不必复制旧设备该目录 |
 
-## 进度摘要（详见 `建模/交接文档_新设备_建模与代码进度_20260901.md`）
+## 进度摘要
 
-- Q1 浪费 / 半价完整 MILP：已完成并审计；官方表在 `outputs/q1_official_display_fixed_20260830/`
-- Q2 情景与若干 lambda 候选：已有中间结果；**样本外 2000 情景评价、最终 result2、Q3 尚未完成**
-- 重跑前请先备份 `results/`、`outputs/`，避免覆盖已审计文件
+三问核心模型已收工。论文和官方表只从定稿目录取数，见 [`结果版本说明.md`](结果版本说明.md)。
+
+- Q1 浪费 / 半价：4076.85 / 5846.51 万元；官方表 `outputs/final/result1_1.xlsx`、`result1_2.xlsx`
+- Q2 锁定 λ=0.25；官方表 `outputs/final/result2.xlsx`
+- Q3：种植结构与 Q2 相同；2000 情景上风险随相关档位递进
+- 收尾复现：`python src/evaluation/prepare_final_bundle.py` 然后 `python src/evaluation/check_final_consistency.py`
+
+旧交接文档仍可用于环境和早期口径；**最终数字以 `结果版本说明.md` 和 `建模/求解收工交接_20260904.md` 为准。**
 
 ## 文档入口
 
-- `建模/交接文档_新设备_建模与代码进度_20260901.md` — 新设备主交接
-- `建模/代码手换设备交接文档.md`
+- `结果版本说明.md` — 论文取数目录
+- `建模/求解收工交接_20260904.md` — 收工口径与不能写清单
+- `建模/交接文档_新设备_建模与代码进度_20260901.md` — 早期交接
 - `练习题三人分工流程.md`
 
 ## License / 用途

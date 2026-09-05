@@ -1,0 +1,7 @@
+﻿sample,strength,check,value,note
+test_2000,weak,mean_yield_price_corr,-0.046752,丰产压价机制；论文只用2000测试情景，不用100训练情景
+test_2000,weak,mean_cost_corr_first8,0.088307,共同投入成本因子；论文只用2000测试情景，不用100训练情景
+test_2000,weak,wheat_corn_demand_corr,0.082407,主要粮食替代组共同市场因子；论文只用2000测试情景，不用100训练情景
+test_2000,medium,mean_yield_price_corr,-0.208393,丰产压价机制；论文只用2000测试情景，不用100训练情景
+test_2000,medium,mean_cost_corr_first8,0.362345,共同投入成本因子；论文只用2000测试情景，不用100训练情景
+test_2000,medium,wheat_corn_demand_corr,0.371002,主要粮食替代组共同市场因子；论文只用2000测试情景，不用100训练情景
